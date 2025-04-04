@@ -12,10 +12,18 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const res = await axios.post("http://localhost:5000/api/auth/login", formData);
+  
+      // Guardar más datos en localStorage
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("nombre", res.data.nombre);
+      localStorage.setItem("rol", res.data.rol);
+      if (res.data.clienteId) {
+        localStorage.setItem("clienteId", res.data.clienteId);
+      }
+  
       alert("Inicio de sesión exitoso");
       navigate("/dashboard");
     } catch (error) {
@@ -23,6 +31,7 @@ function Login() {
       alert("Credenciales incorrectas");
     }
   };
+  
 
   return (
     <div>
