@@ -7,6 +7,8 @@ import ClientesTabla from './components/ClientesTabla';
 import Notificaciones from "./components/Notificaciones"; // ✅ Asegurate de importar esto
 import NotificacionesCliente from "./components/NotificacionesCliente"; // Cliente
 import Header from "./components/Header"; // Cliente
+import LoginAdmin from './components/LoginAdmin'; // o donde esté ubicado
+import NavbarAdministrador from "./components/NavbarAdministrador";
 function App() {
   return (
     <>
@@ -20,6 +22,8 @@ function App() {
         <Route path="/clientes" element={<ClientesTabla />} />
         <Route path="/notificaciones" element={<Notificaciones />} /> {/* ✅ RUTA NUEVA */}
         <Route path="/mis-notificaciones" element={<NotificacionesCliente />} /> {/* Cliente */}
+        <Route path="/login-admin" element={<LoginAdmin />} />
+        <Route path="/admin" element={<NavbarAdministrador />} />
       </Routes>
     </Router>
     </>

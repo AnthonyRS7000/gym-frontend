@@ -4,13 +4,17 @@ const Header = () => {
     const [nombre, setNombre] = useState("");
 
     useEffect(() => {
+        // Verificamos si hay un nombre guardado en localStorage
         const nombreGuardado = localStorage.getItem("nombre");
-        if (nombreGuardado) setNombre(nombreGuardado);
-    }, []);
+
+        if (nombreGuardado) {
+            setNombre(nombreGuardado);  // Si hay un nombre guardado, lo mostramos
+        }
+    }, []);  // El useEffect se ejecuta solo una vez al montar el componente
 
     const cerrarSesion = () => {
-        localStorage.clear();
-        window.location.href = "/login";
+        localStorage.clear();  // Limpiar el localStorage
+        window.location.href = "/login";  // Redirigir al login
     };
 
     return (

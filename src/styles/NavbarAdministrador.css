@@ -1,0 +1,195 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    height: 100vh;
+  }
+  
+  .admin-panel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1; /* Esto asegura que el contenedor se expanda */
+  }
+  
+  .sidebar {
+    background-color: #111;
+    width: 250px;
+    padding-top: 20px;
+    position: fixed;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #FFD700; /* Amarillo */
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+  
+  .nav-links {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-links a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    background-color: #FFD700; /* Amarillo */
+    color: #111;
+  }
+  
+  /* Main content area */
+  .main-content {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px); /* Esto asegura que el contenido ocupe el 100% */
+    transition: margin-left 0.3s ease;
+    flex-grow: 1; /* Esto asegura que la columna principal ocupe todo el espacio disponible */
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .welcome-message {
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .logout-btn {
+    background-color: #FF6347; /* Rojo */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-btn:hover {
+    background-color: #e53e3e; /* Rojo más oscuro */
+  }
+  
+  /* Content */
+  .content {
+    margin-top: 20px;
+  }
+  
+  .overview {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas más pequeñas */
+  }
+  
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .card h3 {
+    color: #111;
+  }
+  
+  .card p {
+    font-size: 1.5em;
+    color: #FFD700; /* Amarillo */
+  }
+  
+  .chart {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chart-area {
+    height: 300px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .admin-panel {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+      box-shadow: none;
+    }
+  
+    .main-content {
+      margin-left: 0;
+      width: 100%;
+    }
+  
+    .overview {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  
+    .card {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .nav-links {
+      display: flex;
+      justify-content: space-around;
+      padding: 0;
+    }
+  
+    .nav-links li {
+      text-align: center;
+      margin: 0 10px;
+    }
+  
+    .nav-links a {
+      padding: 10px;
+      font-size: 1em;
+    }
+  }
+  
