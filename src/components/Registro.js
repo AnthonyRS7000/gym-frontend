@@ -91,6 +91,7 @@ const Registro = () => {
 
             <input type="text" name="telefono" placeholder="Teléfono" value={formData.telefono} onChange={handleChange} required />
             <input type="text" name="direccion" placeholder="Dirección" value={formData.direccion} onChange={handleChange} required />
+            <input type="text" name="dni" placeholder="dni" value={formData.dni} onChange={handleChange} required />
             <input type="date" name="fecha_nacimiento" value={formData.fecha_nacimiento} onChange={handleChange} required />
 
             <select name="genero" value={formData.genero} onChange={handleChange} required>

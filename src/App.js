@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./components/Login";
 import Registro from "./components/Registro";
 import AsistenciaForm from "./components/AsistenciaForm";
@@ -11,6 +12,7 @@ import LoginAdmin from './components/LoginAdmin'; // o donde esté ubicado
 import NavbarAdministrador from "./components/NavbarAdministrador";
 import UserProfile from "./components/UserProfile";
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminPanel from "./components/AdminPanel";
 function App() {
   return (
     <>
@@ -35,13 +37,15 @@ function App() {
         path="/asistencias"
         element={<ProtectedRoute element={AsistenciaTabla} rolesPermitidos={['administrador']} />}
       />
+      <Route element={<AdminPanel/>}>
       <Route
         path="/clientes"
         element={<ProtectedRoute element={ClientesTabla} rolesPermitidos={['administrador']} />}
       />
+      </Route>
       <Route
         path="/admin"
-        element={<ProtectedRoute element={NavbarAdministrador} rolesPermitidos={['administrador']} />}
+        element={<ProtectedRoute element={AdminPanel} rolesPermitidos={['administrador']} />}
       />
       <Route
         path="/notificaciones"

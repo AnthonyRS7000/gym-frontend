@@ -1,48 +1,84 @@
-import React, { useState } from 'react';
-import '../styles//NavbarAdministrador.css'; // Importamos el archivo CSS
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/adminPanel/bootstrap.min.css";
+import "../styles/adminPanel/bootstrap-material-design.min.css";
+import "../styles/adminPanel/material-design-iconic-font.min.css";
+import "../styles/adminPanel/sweetalert2.css";
+import "../styles/adminPanel/jquery.mCustomScrollbar.css";
+import "../styles/adminPanel/ripples.min.css";
+import "../styles/adminPanel/main.css";
 
 const NavbarAdministrador = () => {
+  const navigate = useNavigate();
+  const [usuario, setUsuario] = useState(null);
+
+  useEffect(() => {
+    const usuarioJSON = localStorage.getItem("usuario");
+    if (usuarioJSON) {
+      setUsuario(JSON.parse(usuarioJSON));
+    }
+  }, []);
+
+  const cerrarSesion = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
-    <div className="admin-panel">
-      <div className="sidebar">
-        <div className="logo">MiApp</div>
-        <ul className="nav-links">
-          <li><a href="#clientes">Clientes</a></li>
-          <li><a href="#entrenadores">Entrenadores</a></li>
-          <li><a href="#empleados">Empleados</a></li>
-          <li><a href="#dashboard">Dashboard</a></li>
-          <li><a href="#historial-economico">Historial Económico</a></li>
-          <li><a href="#asistencias">Asistencias</a></li>
-        </ul>
-      </div>
-      <div className="main-content">
-        <header>
-          <span className="welcome-message">Bienvenido, Adrián</span>
-          <button className="logout-btn">Cerrar sesión</button>
-        </header>
-        <div className="content">
-          <div className="overview">
-            <div className="card">
-              <h3>Total Clientes</h3>
-              <p>200</p>
-            </div>
-            <div className="card">
-              <h3>Total Entrenadores</h3>
-              <p>10</p>
-            </div>
-            <div className="card">
-              <h3>Total Empleados</h3>
-              <p>5</p>
-            </div>
-          </div>
-          <div className="chart">
-            <h2>Historial Económico</h2>
-            <div className="chart-area">
-              {/* Aquí iría un gráfico representando el historial económico */}
-              <p>Gráfico de historial económico (por implementar)</p>
-            </div>
-          </div>
+    <div className="full-box cover dashboard-sideBar">
+      <div className="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
+      <div className="full-box dashboard-sideBar-ct">
+        <div className="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
+          GYM SYSTEM <i className="zmdi zmdi-close btn-menu-dashboard visible-xs"></i>
         </div>
+        <div className="full-box dashboard-sideBar-UserInfo">
+          <figure className="full-box">
+            <img src="/assets/img/avatar.jpg" alt="UserIcon" />
+            <figcaption className="text-center text-titles">
+              {usuario ? usuario.nombre : "Administrador"}
+            </figcaption>
+          </figure>
+          <ul className="full-box list-unstyled text-center">
+            <li>
+              <Link to="/perfil-usuario">
+                <i className="zmdi zmdi-settings"></i>
+              </Link>
+            </li>
+            <li>
+              <button onClick={cerrarSesion} className="btn-exit-system">
+                <i className="zmdi zmdi-power"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <ul className="list-unstyled full-box dashboard-sideBar-Menu">
+          <li>
+            <Link to="/admin">
+              <i className="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Dashboard
+            </Link>
+          </li>
+          <li>
+            <Link to="/clientes">
+              <i className="zmdi zmdi-accounts-list zmdi-hc-fw"></i> Clientes
+            </Link>
+          </li>
+          <li>
+            <Link to="/asistencias">
+              <i className="zmdi zmdi-calendar-check zmdi-hc-fw"></i> Asistencias
+            </Link>
+          </li>
+          <li>
+            <Link to="/membresias">
+              <i className="zmdi zmdi-card zmdi-hc-fw"></i> Membresías
+            </Link>
+          </li>
+          <li>
+            <Link to="/notificaciones">
+              <i className="zmdi zmdi-notifications-active zmdi-hc-fw"></i> Notificaciones
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   );
