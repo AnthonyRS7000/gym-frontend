@@ -16,13 +16,18 @@ function Login() {
     try {
       const res = await axios.post("http://localhost:5000/api/auth/login", formData);
   
-      // Guardar más datos en localStorage
       localStorage.setItem("token", res.data.token);
-      localStorage.setItem("nombre", res.data.nombre);
-      localStorage.setItem("rol", res.data.rol);
-      if (res.data.clienteId) {
-        localStorage.setItem("clienteId", res.data.clienteId);
-      }
+
+      // Guardar todo en una sola clave "usuario"
+      const usuario = {
+        id: res.data.usuario.id,
+        nombre: res.data.usuario.nombre,
+        email: res.data.usuario.email,
+        rol: res.data.usuario.rol,
+        clienteId: res.data.usuario.clienteId || null // opcional
+      };
+      
+      localStorage.setItem("usuario", JSON.stringify(usuario));
   
       alert("Inicio de sesión exitoso");
       navigate("/dashboard");

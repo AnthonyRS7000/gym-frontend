@@ -9,22 +9,49 @@ import NotificacionesCliente from "./components/NotificacionesCliente"; // Clien
 import Header from "./components/Header"; // Cliente
 import LoginAdmin from './components/LoginAdmin'; // o donde esté ubicado
 import NavbarAdministrador from "./components/NavbarAdministrador";
+import UserProfile from "./components/UserProfile";
+import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   return (
     <>
     <Header />
     <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route path="/registrar-asistencia" element={<AsistenciaForm />} />
-        <Route path="/asistencias" element={<AsistenciaTabla />} />
-        <Route path="/clientes" element={<ClientesTabla />} />
-        <Route path="/notificaciones" element={<Notificaciones />} /> {/* ✅ RUTA NUEVA */}
-        <Route path="/mis-notificaciones" element={<NotificacionesCliente />} /> {/* Cliente */}
-        <Route path="/login-admin" element={<LoginAdmin />} />
-        <Route path="/admin" element={<NavbarAdministrador />} />
-      </Routes>
+    <Routes>
+      {/* Públicas */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/registro" element={<Registro />} />
+      <Route path="/login-admin" element={<LoginAdmin />} />
+
+      {/* Protegidas (requieren estar logueado) */}
+      <Route
+        path="/perfil-usuario"
+        element={<ProtectedRoute element={UserProfile} rolesPermitidos={['cliente', 'entrenador', 'administrador']} />}
+      />
+      <Route
+        path="/registrar-asistencia"
+        element={<ProtectedRoute element={AsistenciaForm} rolesPermitidos={['entrenador','cliente','administrador','empleado']} />}
+      />
+      <Route
+        path="/asistencias"
+        element={<ProtectedRoute element={AsistenciaTabla} rolesPermitidos={['administrador']} />}
+      />
+      <Route
+        path="/clientes"
+        element={<ProtectedRoute element={ClientesTabla} rolesPermitidos={['administrador']} />}
+      />
+      <Route
+        path="/admin"
+        element={<ProtectedRoute element={NavbarAdministrador} rolesPermitidos={['administrador']} />}
+      />
+      <Route
+        path="/notificaciones"
+        element={<ProtectedRoute element={Notificaciones} rolesPermitidos={['administrador']} />}
+      />
+      <Route
+        path="/mis-notificaciones"
+        element={<ProtectedRoute element={NotificacionesCliente} rolesPermitidos={['cliente']} />}
+      />
+    </Routes>
     </Router>
     </>
   );
