@@ -1,0 +1,275 @@
+.gym-container {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Sección Hero con solo la imagen de fondo */
+.hero {
+  position: relative;
+  height: 100vh; /* Esto hace que ocupe toda la pantalla */
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Hace que la imagen se ajuste bien al contenedor */
+}
+
+/* Nueva sección de "Buscar Sede" con imagen de fondo */
+.search-location {
+  position: relative;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.search-location-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.search-location-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.search-location-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.search-container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.search-input {
+  border: none;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 1rem;
+  width: 300px;
+}
+
+.search-button {
+  background-color: transparent; /* Eliminar el fondo */
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 25px; /* Bordes redondeados */
+  font-size: 1rem;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  border: none; /* Aseguramos que no haya borde en el botón */
+}
+
+.search-button:hover {
+  background-color: #fcb900; /* Fondo amarillo cuando se pasa el cursor */
+}
+
+.search-button i {
+  font-size: 20px; /* Tamaño adecuado para el ícono */
+  color: #070707; /* Color oscuro para el ícono */
+  border: none; /* Eliminamos cualquier borde alrededor del ícono */
+  outline: none; /* Eliminamos cualquier contorno que pueda aparecer */
+}
+
+.search-button svg {
+  width: 20px;
+  height: 20px;
+  stroke: #070707; /* Color del ícono */
+  border: none; /* Aseguramos que el ícono SVG no tenga borde */
+}
+/* Resto de las secciones */
+.plans {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.plans h2 {
+  margin-top: 10px;
+}
+
+.plan-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.plan-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 30%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.plan-card h3 {
+  font-size: 1.5rem;
+  color: #fcb900;
+}
+
+.experience {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.experience h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.experience-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.experience-card {
+  width: 30%;
+  text-align: center;
+}
+
+.experience-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.group-classes {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.group-classes h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.classes-cards {
+  display: flex;
+  justify-content: space-around;
+}
+
+.class-card {
+  width: 30%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.app {
+  background-color: #fcb900;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.coach {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.coach h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+.plans {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.plans h1, .plans h2 {
+  font-family: "Arial", sans-serif; /* Replace with your desired font */
+}
+.plans h2 {
+  font-size: 18px; /* Adjust size for the subheading */
+  color: #4d4d4d; /* Dark gray for readability */
+  font-weight: normal;
+  margin-top: 10px;
+}
+.plans h1 span {
+  color: #f9a800; /* Color for "TU PLAN" in orange */
+}
+.plans h1 {
+  font-size: 40px; /* Adjust based on your design */
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #000; /* Black color for the title */
+  display: inline;
+}
+
+.plans-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.plans-table-header {
+  display: table-header-group;
+  font-weight: bold;
+  background-color: #fcb900;
+}
+
+.plans-table-header-item {
+  display: table-cell;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.plans-table-row {
+  display: table-row;
+}
+
+.plans-table-item {
+  display: table-cell;
+  padding: 15px;
+  text-align: center;
+}
+
+.plans-table-item:hover {
+  background-color: #f0f0f0;
+}
+
+.plans-table-footer {
+  display: table-footer-group;
+  font-weight: bold;
+  background-color: #fcb900;
+}
+
+.plans-table-footer-item {
+  display: table-cell;
+  padding: 10px;
+  text-align: center;
+}
+
+.cta-button {
+  background-color: #fcb900;
+  padding: 15px 30px;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #e59e00;
+}

@@ -1,0 +1,67 @@
+/* src/components/Header.css */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 2px -2px gray;
+  }
+  
+  .logo-img {
+    height: 40px;
+  }
+  
+  .nav-links ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-links li {
+    margin: 0 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+  }
+  
+  .signup-button {
+    background-color: #FFAA00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .signup-button:hover {
+    background-color: #e89a00;
+  }
+  
+  .menu-icon button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: none; /* Ocultamos el menú en pantallas grandes */
+  }
+  
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none; /* Escondemos los enlaces de navegación en pantallas pequeñas */
+    }
+  
+    .menu-icon button {
+      display: block;
+    }
+  
+    .header {
+      padding: 15px 20px;
+    }
+  }
+  
