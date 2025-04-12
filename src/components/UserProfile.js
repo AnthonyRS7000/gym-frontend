@@ -7,18 +7,31 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    console.log("Token obtenido del localStorage:", token);
+
+    if (!token) {
+      console.error("No se encontró el token en localStorage");
+      setLoading(false);
+      return;
+    }
+
     axios.get('http://localhost:5000/api/user/profile', {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${token}`
       }
     })
     .then(res => {
+      console.log("Respuesta del backend:", res.data);
       setUserData(res.data);
       setForm({ ...res.data, ...res.data.datosExtra });
       setLoading(false);
     })
     .catch(err => {
-      console.error(err);
+      console.error("Error en la petición GET:", err);
+      if (err.response) {
+        console.log("Respuesta del servidor (error):", err.response.data);
+      }
       setLoading(false);
     });
   }, []);
@@ -29,14 +42,25 @@ const UserProfile = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // Enviar solo los campos editables. Si querés, lo separamos por rol.
+    const token = localStorage.getItem('token');
+    console.log("Enviando datos del formulario:", form);
+    console.log("Token usado en PUT:", token);
+
     axios.put('http://localhost:5000/api/user/profile', form, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${token}`
       }
     })
-    .then(() => alert('Perfil actualizado correctamente'))
-    .catch(() => alert('Error al actualizar perfil'));
+    .then(() => {
+      alert('Perfil actualizado correctamente');
+    })
+    .catch(err => {
+      console.error("Error en la petición PUT:", err);
+      if (err.response) {
+        console.log("Respuesta del servidor (error PUT):", err.response.data);
+      }
+      alert('Error al actualizar perfil');
+    });
   };
 
   if (loading) return <p>Cargando perfil...</p>;
